@@ -17,11 +17,9 @@ export async function authenticateUser(
   formData: FormData,
 ) {
   try {
-    await signIn("credentials", formData);
-    console.log({ formData });
+    await signIn("credentials", formData); //signIn() Triggers the `authorize` Function in authConfig in config.ts file
   } catch (error) {
     if (error instanceof AuthError) {
-      console.log({ type: error.type });
       switch (error.type) {
         case "CredentialsSignin":
           return "Invalid credentials";
@@ -54,7 +52,7 @@ export async function register(
       return "User already exists";
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     const hashedpassword = await bcrypt.hash(enteredPassword, 10);
 
     await db.user.create({

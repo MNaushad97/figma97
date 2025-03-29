@@ -34,7 +34,8 @@ declare module "next-auth" {
  */
 export const authConfig = {
   providers: [
-    // DiscordProvider,
+    //we can have providers like google etc for auth
+    //DiscordProvider,
     credentials({
       credentials: { email: {}, password: {} },
       authorize: async (credentials) => {
@@ -68,9 +69,7 @@ export const authConfig = {
      *
      * Most other providers require a bit more work than the Discord provider. For example, the
      * GitHub provider requires you to add the `refresh_token_expires_in` field to the Account
-     * model. Refer to the NextAuth.js docs for the provider you want to use. Example:
-     *
-     * @see https://next-auth.js.org/providers/github
+     * model.
      */
   ],
   session: {

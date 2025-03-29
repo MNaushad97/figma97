@@ -11,6 +11,13 @@ export default function Page() {
   );
   const signInFormConfig = [
     { label: "", type: "hidden", name: "redirectTo", value: "/dashboard" },
+    /*
+    special trick to redirect to dashboard on formsubmission
+    NextAuth, it also automatically reads redirectTo when signIn() is called
+    Extracts redirectTo from req.body (since it was included in the form)
+    if signIn sucessful,The browser receives a 302 redirect respo with Location: /dashboard
+    */
+
     { label: "EMAIL", type: "email", name: "email", isRequired: true },
     { label: "PASSWORD", type: "text", name: "password", isRequired: true },
   ];
@@ -21,12 +28,6 @@ export default function Page() {
           Sign In
         </h1>
         <form action={formAction} className="space-y-4">
-          {/* <input
-            className="w-full rounded-md border border-gray-300 px-3 pb-1 pt-7 text-sm focus:border-black focus:outline-none"
-            type="hidden"
-            name="redirectTo"
-            value="/dashboard"
-          /> */}
           {signInFormConfig?.map((field, index) => (
             <div className="relative h-fit" key={index}>
               <input
