@@ -53,13 +53,13 @@ export async function register(
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    const hashedpassword = await bcrypt.hash(enteredPassword, 10);
+    const hashedPassword = await bcrypt.hash(enteredPassword, 10);
 
     await db.user.create({
       data: {
         email: enteredEmail,
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        password: hashedpassword,
+        password: hashedPassword,
       },
     });
   } catch (error) {

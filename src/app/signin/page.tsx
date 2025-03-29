@@ -13,7 +13,7 @@ export default function Page() {
     { label: "", type: "hidden", name: "redirectTo", value: "/dashboard" },
     /*
     special trick to redirect to dashboard on formsubmission
-    NextAuth, it also automatically reads redirectTo when signIn() is called
+    NextAuth automatically reads redirectTo when signIn() is called
     Extracts redirectTo from req.body (since it was included in the form)
     if signIn sucessful,The browser receives a 302 redirect respo with Location: /dashboard
     */
